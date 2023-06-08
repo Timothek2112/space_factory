@@ -35,7 +35,8 @@ public partial class PlayerController : Node
 			return;
 
 		buildingToBuild.Build();
-	}
+		DisableBuildingMode();
+    }
 
 	public override void _Input(InputEvent @event){
 		
@@ -78,6 +79,8 @@ public partial class PlayerController : Node
 	}
 
 	public void SetMode(PlayerModeEnum newMode){
+		if (mode == newMode)
+			return;
 		prevMode = mode;
 		mode = newMode;
 	}

@@ -39,11 +39,11 @@ public partial class BaseBuilding : Node2D, IPutable, IBuildable
 	public void SetPositionNotBuilt(){
 		var directionFromGround = GetGlobalMousePosition() - buildedOn.GlobalPosition;
 		GlobalPosition = (GetGlobalMousePosition() - buildedOn.GlobalPosition).Normalized() * buildedOn.radius + buildedOn.GlobalPosition;
-		this.Rotation = directionFromGround.Angle() + Mathf.Pi/2;
+		this.Rotation = angleOnPlanet = directionFromGround.Angle() + Mathf.Pi/2;
 	}
 
 	public void SetPositionOnPlanet(){
-		GlobalPosition = (buildedOn.GlobalPosition + Vector2.Up* buildedOn.radius).Rotated(angleOnPlanet);
+		GlobalPosition = (buildedOn.GlobalPosition + Vector2.Up.Rotated(angleOnPlanet) * buildedOn.radius);
 		var directionFromGround = this.GlobalPosition - buildedOn.GlobalPosition;
 		this.Rotation = directionFromGround.Angle() + Mathf.Pi/2;
 	}

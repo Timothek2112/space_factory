@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://crmjla3im560"]
+[gd_scene load_steps=9 format=3 uid="uid://crmjla3im560"]
 
 [ext_resource type="PackedScene" uid="uid://mqdfnh5jse4l" path="res://UI/ItemUI.tscn" id="1_ifu88"]
 [ext_resource type="Script" path="res://UI/DraggableUI.cs" id="1_u3rev"]
 [ext_resource type="Texture2D" uid="uid://d2idkaus8g6q4" path="res://UI/Sprites/MainPanel01.png" id="1_u5p1o"]
 [ext_resource type="PackedScene" uid="uid://cvc3cst8hcdp6" path="res://UI/BuildingListItem.tscn" id="2_fcvmi"]
 [ext_resource type="PackedScene" uid="uid://bfa7n7nwdwm8w" path="res://Tech/Mine/RockMine.tscn" id="5_eq4m6"]
+[ext_resource type="PackedScene" uid="uid://c5t6bqpmrslsf" path="res://Tech/Storage/StorageBuilding.tscn" id="6_8haxy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nsqh3"]
 size = Vector2(796.341, 22.3008)
@@ -151,6 +152,13 @@ layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_2mook")
 text = "Каменная шахта"
 building = ExtResource("5_eq4m6")
+
+[node name="BuildRockMine10" parent="BuildingOptions/VBoxContainer" instance=ExtResource("2_fcvmi")]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_2mook")
+text = "Склад"
+building = ExtResource("6_8haxy")
 
 [connection signal="mouse_entered" from="StorageInventory/TextureRect" to="StorageInventory/TextureRect" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="StorageInventory/TextureRect" to="StorageInventory/TextureRect" method="_on_mouse_exited"]

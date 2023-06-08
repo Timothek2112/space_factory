@@ -25,8 +25,6 @@ public partial class BuildingListItem : Button
 	private void _on_button_down(){
 		var instance = building.Instantiate();
 		GetNode("/root").AddChild(instance);
-		((BaseBuilding)instance).Builded = instance.GetNode<Node2D>("Builded");
-		((BaseBuilding)instance).Blueprint = instance.GetNode<Node2D>("Blueprint");
 		GetNode<PlayerController>("/root/PlayerController").EnableBuildingMode((IBuildable)instance);
 
 	}
