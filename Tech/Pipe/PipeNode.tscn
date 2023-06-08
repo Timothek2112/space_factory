@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://fk0j1na65wql"]
+
+[ext_resource type="Script" path="res://Tech/Pipe/PipeNode.cs" id="1_wsn0d"]
+[ext_resource type="PackedScene" uid="uid://dvuy2s2hb3ci6" path="res://Tech/Line.tscn" id="2_1ymc0"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kitxn"]
+radius = 22.0907
+
+[node name="StartNode" type="Area2D"]
+script = ExtResource("1_wsn0d")
+linePrefab = ExtResource("2_1ymc0")
+maxPipeLength = 100.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_kitxn")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

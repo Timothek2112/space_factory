@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://c2lbbm7uqb7em"]
+
+[ext_resource type="PackedScene" uid="uid://bwx5ijemdyahc" path="res://Scenes/Spaceship/Spaceship.tscn" id="1_dnxu3"]
+[ext_resource type="Script" path="res://Controllers/CameraController.cs" id="2_bavsg"]
+[ext_resource type="PackedScene" uid="uid://ddi8wsax26oyq" path="res://Scenes/Planet/Planet.tscn" id="3_0nwqs"]
+[ext_resource type="PackedScene" uid="uid://crmjla3im560" path="res://UI/MainUI.tscn" id="4_0geuq"]
+
+[node name="Mechanics" type="Node2D"]
+
+[node name="Spaceship" parent="." instance=ExtResource("1_dnxu3")]
+position = Vector2(399, 10)
+rotation = -0.95526
+weight = 3.0
+isPlayer = true
+
+[node name="Camera2D" type="Camera2D" parent="Spaceship" groups=["MainCamera"]]
+position_smoothing_enabled = true
+rotation_smoothing_enabled = true
+editor_draw_limits = true
+editor_draw_drag_margin = true
+script = ExtResource("2_bavsg")
+groundedZoom = 0.5
+
+[node name="Planet" parent="." instance=ExtResource("3_0nwqs")]
+position = Vector2(-558, -302)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MainUI" parent="CanvasLayer" instance=ExtResource("4_0geuq")]

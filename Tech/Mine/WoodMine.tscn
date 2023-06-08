@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://dn7g2q5e3ijwc"]
+
+[ext_resource type="PackedScene" uid="uid://cmvdq7ibude70" path="res://Tech/BaseBuilding.tscn" id="1_v2ej0"]
+[ext_resource type="Script" path="res://Tech/Mine/Mine.cs" id="2_8b08l"]
+[ext_resource type="PackedScene" uid="uid://fk0j1na65wql" path="res://Tech/Pipe/PipeNode.tscn" id="3_fk2wp"]
+
+[node name="WoodMine" instance=ExtResource("1_v2ej0")]
+script = ExtResource("2_8b08l")
+id = 2
+
+[node name="StartNode" parent="." index="1" instance=ExtResource("3_fk2wp")]
+position = Vector2(38, -15)
+itemsType = 2

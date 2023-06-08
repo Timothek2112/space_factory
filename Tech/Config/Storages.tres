@@ -1,0 +1,11 @@
+[gd_resource type="JSON" format=3 uid="uid://b6houf0hya6gu"]
+
+[resource]
+data = [{
+"id": 0.0,
+"inputSlots": [],
+"name": "Обычный склад",
+"outpuSlots": [],
+"slotSize": 100.0,
+"slots": 10.0
+}]

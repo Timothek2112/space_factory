@@ -1,0 +1,13 @@
+[gd_resource type="JSON" format=3 uid="uid://dqvnh7bkjwd4r"]
+
+[resource]
+data = [{
+"name": "Древесина",
+"type": "wood"
+}, {
+"name": "Камень",
+"type": "rock"
+}, {
+"name": "Вода",
+"type": "water"
+}]

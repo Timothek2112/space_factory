@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://cmvdq7ibude70"]
+
+[ext_resource type="Script" path="res://Tech/BaseBuilding.cs" id="1_yj357"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_vja6j"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_iu0y7"]
+
+[node name="BaseMine" type="Node2D" node_paths=PackedStringArray("Builded", "Blueprint")]
+script = ExtResource("1_yj357")
+id = -1
+Builded = NodePath("Builded")
+Blueprint = NodePath("Blueprint")
+
+[node name="Builded" type="Sprite2D" parent="."]
+scale = Vector2(-70.6723, -124.688)
+texture = SubResource("PlaceholderTexture2D_vja6j")
+
+[node name="Blueprint" type="Sprite2D" parent="."]
+modulate = Color(0, 0.92549, 0.933333, 0.27451)
+position = Vector2(-0.5, -1.90735e-06)
+scale = Vector2(71, 124)
+texture = SubResource("PlaceholderTexture2D_iu0y7")

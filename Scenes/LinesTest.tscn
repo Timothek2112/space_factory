@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://cgunaah1m7irh"]
+
+[ext_resource type="PackedScene" uid="uid://bfa7n7nwdwm8w" path="res://Tech/Mine/RockMine.tscn" id="1_ghgxq"]
+[ext_resource type="PackedScene" uid="uid://c5t6bqpmrslsf" path="res://Tech/Storage/StorageBuilding.tscn" id="2_00vdp"]
+[ext_resource type="PackedScene" uid="uid://crmjla3im560" path="res://UI/MainUI.tscn" id="3_herxv"]
+[ext_resource type="PackedScene" uid="uid://bqbln1pto5y0w" path="res://Tech/Mine/WaterMine.tscn" id="4_kk5db"]
+
+[node name="LinesTest" type="Node2D"]
+
+[node name="BaseMine2" parent="." instance=ExtResource("2_00vdp")]
+position = Vector2(636, 485)
+
+[node name="BaseMine3" parent="." instance=ExtResource("2_00vdp")]
+position = Vector2(631, 629)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(431, 548)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Camera2D"]
+
+[node name="MainUI" parent="Camera2D/CanvasLayer" instance=ExtResource("3_herxv")]
+z_index = 1000
+
+[node name="BaseMine4" parent="." instance=ExtResource("4_kk5db")]
+position = Vector2(498, 502)
+
+[node name="BaseMine" parent="." instance=ExtResource("1_ghgxq")]
+position = Vector2(486, 668)

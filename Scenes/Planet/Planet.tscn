@@ -1,0 +1,47 @@
+[gd_scene load_steps=6 format=3 uid="uid://ddi8wsax26oyq"]
+
+[ext_resource type="Texture2D" uid="uid://ctgsmmy160ft0" path="res://Scenes/Planet/red_no_atmosphere_1.png" id="1_3f2mu"]
+[ext_resource type="Script" path="res://Scenes/Planet/Planet.cs" id="1_53d2t"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tmkar"]
+radius = 62.0081
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_b2fu6"]
+radius = 212.116
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cfbbi"]
+radius = 65.0077
+
+[node name="Planet" type="Node2D"]
+scale = Vector2(4, 4)
+script = ExtResource("1_53d2t")
+weight = 10000.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture_repeat = 1
+texture = ExtResource("1_3f2mu")
+
+[node name="SolidBody" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SolidBody"]
+shape = SubResource("CircleShape2D_tmkar")
+
+[node name="Gravity" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Gravity"]
+shape = SubResource("CircleShape2D_b2fu6")
+
+[node name="GroundedArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GroundedArea"]
+shape = SubResource("CircleShape2D_cfbbi")
+debug_color = Color(0.815686, 0.376471, 0.415686, 0.419608)
+
+[node name="BuildingPoint" type="Node2D" parent="."]
+position = Vector2(0, -68)
+
+[connection signal="body_entered" from="Gravity" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Gravity" to="." method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="GroundedArea" to="." method="_on_grounded_area_body_entered"]
+[connection signal="body_exited" from="GroundedArea" to="." method="_on_grounded_area_body_exited"]

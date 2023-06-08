@@ -1,0 +1,24 @@
+[gd_resource type="JSON" format=3 uid="uid://bfri02i51wk6e"]
+
+[resource]
+data = [{
+"buildingType": "mine",
+"building_id": 0.0,
+"id": 0.0,
+"researches": []
+}, {
+"buildingType": "mine",
+"building_id": 1.0,
+"id": 1.0,
+"researches": ["storingWater"]
+}, {
+"buildingType": "mine",
+"building_id": 2.0,
+"id": 2.0,
+"researches": ["woodCutting"]
+}, {
+"buildingType": "store",
+"building_id": 0.0,
+"id": 3.0,
+"researches": ["storingWater", "woodCutting", "storing"]
+}]

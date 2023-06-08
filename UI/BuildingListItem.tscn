@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://cvc3cst8hcdp6"]
+
+[ext_resource type="Script" path="res://UI/BuildingListItem.cs" id="1_dhg8a"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_jcvc0"]
+
+[node name="BuildingListItem" type="Button"]
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.386
+offset_right = -838.0
+offset_bottom = -193.128
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_dhg8a")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(31, 29)
+scale = Vector2(42.25, 39.75)
+texture = SubResource("PlaceholderTexture2D_jcvc0")
+
+[connection signal="button_down" from="." to="." method="_on_button_down"]

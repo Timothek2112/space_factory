@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://bwx5ijemdyahc"]
+
+[ext_resource type="Script" path="res://Scenes/Spaceship/Spaceship.cs" id="1_0mqtv"]
+[ext_resource type="Texture2D" uid="uid://fbes72wlbnsm" path="res://Scenes/Spaceship/body_02.png" id="2_8rvtw"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l5xj6"]
+radius = 14.0
+height = 60.0
+
+[node name="Spaceship" type="CharacterBody2D" groups=["SpaceshipBody"]]
+script = ExtResource("1_0mqtv")
+stoppingFactor = 1.0
+accelerationFactor = 0.9
+rotateSpeed = 0.05
+boostForce = 100.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -2)
+shape = SubResource("CapsuleShape2D_l5xj6")
+
+[node name="Body" type="Sprite2D" parent="."]
+texture_filter = 1
+texture_repeat = 2
+texture = ExtResource("2_8rvtw")

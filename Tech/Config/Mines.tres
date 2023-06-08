@@ -1,0 +1,45 @@
+[gd_resource type="JSON" format=3 uid="uid://dgasws2xqrmao"]
+
+[resource]
+data = [{
+"id": 0.0,
+"inputSlots": [],
+"itemsPerSecond": 1.0,
+"miningResources": [{
+"count": 1.0,
+"type": "rock"
+}],
+"name": "Каменная шахта",
+"outputSlots": [{
+"capability": 100.0,
+"type": "rock"
+}]
+},
+{
+"id": 1.0,
+"inputSlots": [],
+"itemsPerSecond": 3.0,
+"miningResources": [{
+"count": 1.0,
+"type": "water"
+}],
+"name": "Водяной насос",
+"outputSlots": [{
+"capability": 50.0,
+"type": "water"
+}]
+},
+{
+"id": 2.0,
+"inputSlots": [],
+"itemsPerSecond": 1.0,
+"miningResources": [{
+"count": 1.0,
+"type": "wood"
+}],
+"name": "Дерево делатель",
+"outputSlots": [{
+"capability": 150.0,
+"type": "wood"
+}]
+}]

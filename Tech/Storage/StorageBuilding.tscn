@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://c5t6bqpmrslsf"]
+
+[ext_resource type="PackedScene" uid="uid://cmvdq7ibude70" path="res://Tech/BaseBuilding.tscn" id="1_ded30"]
+[ext_resource type="Script" path="res://Tech/Storage/StorageBuilding.cs" id="2_1222p"]
+[ext_resource type="PackedScene" uid="uid://fk0j1na65wql" path="res://Tech/Pipe/PipeNode.tscn" id="2_8104v"]
+
+[node name="DefaultStorage" instance=ExtResource("1_ded30")]
+script = ExtResource("2_1222p")
+slots = 0
+id = 0
+
+[node name="StartNode" parent="." index="1" instance=ExtResource("2_8104v")]
+position = Vector2(-41, -5)
+isAnyResource = true
+isInput = true
