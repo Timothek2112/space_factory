@@ -1,14 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://crmjla3im560"]
+[gd_scene load_steps=5 format=3 uid="uid://crmjla3im560"]
 
-[ext_resource type="PackedScene" uid="uid://mqdfnh5jse4l" path="res://UI/ItemUI.tscn" id="1_ifu88"]
-[ext_resource type="Script" path="res://UI/DraggableUI.cs" id="1_u3rev"]
-[ext_resource type="Texture2D" uid="uid://d2idkaus8g6q4" path="res://UI/Sprites/MainPanel01.png" id="1_u5p1o"]
 [ext_resource type="PackedScene" uid="uid://cvc3cst8hcdp6" path="res://UI/BuildingListItem.tscn" id="2_fcvmi"]
 [ext_resource type="PackedScene" uid="uid://bfa7n7nwdwm8w" path="res://Tech/Mine/RockMine.tscn" id="5_eq4m6"]
 [ext_resource type="PackedScene" uid="uid://c5t6bqpmrslsf" path="res://Tech/Storage/StorageBuilding.tscn" id="6_8haxy"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_nsqh3"]
-size = Vector2(796.341, 22.3008)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2mook"]
 bg_color = Color(0.356863, 0.243137, 0.235294, 1)
@@ -23,115 +17,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="StorageInventory" type="TextureRect" parent="."]
-process_mode = 1
-layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -793.0
-offset_top = -244.0
-offset_right = 59.0
-offset_bottom = 283.0
-grow_horizontal = 0
-grow_vertical = 2
-scale = Vector2(0.82, 0.82)
-texture = ExtResource("1_u5p1o")
-
-[node name="TextureRect" type="TextureRect" parent="StorageInventory"]
-layout_mode = 0
-offset_left = 31.7073
-offset_top = -25.6098
-offset_right = 700.707
-offset_bottom = 14.3902
-scale = Vector2(1, 1.5)
-script = ExtResource("1_u3rev")
-
-[node name="Area2D" type="Area2D" parent="StorageInventory/TextureRect"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StorageInventory/TextureRect/Area2D"]
-position = Vector2(398.171, 29.8496)
-shape = SubResource("RectangleShape2D_nsqh3")
-
-[node name="GridContainer" type="GridContainer" parent="StorageInventory"]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 50.0
-offset_top = 39.0244
-offset_right = 38.0
-offset_bottom = 23.0244
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/h_separation = 10
-theme_override_constants/v_separation = 10
-columns = 5
-
-[node name="ItemUI" parent="StorageInventory/GridContainer" instance=ExtResource("1_ifu88")]
-custom_minimum_size = Vector2(120, 130)
-layout_mode = 2
-
-[node name="ItemUI2" parent="StorageInventory/GridContainer" instance=ExtResource("1_ifu88")]
-custom_minimum_size = Vector2(120, 130)
-layout_mode = 2
-
-[node name="ItemUI11" parent="StorageInventory/GridContainer" instance=ExtResource("1_ifu88")]
-custom_minimum_size = Vector2(120, 130)
-layout_mode = 2
-
-[node name="ItemUI12" parent="StorageInventory/GridContainer" instance=ExtResource("1_ifu88")]
-custom_minimum_size = Vector2(120, 130)
-layout_mode = 2
-
-[node name="ItemUI13" parent="StorageInventory/GridContainer" instance=ExtResource("1_ifu88")]
-custom_minimum_size = Vector2(120, 130)
-layout_mode = 2
-
-[node name="ItemUI14" parent="StorageInventory/GridContainer" instance=ExtResource("1_ifu88")]
-custom_minimum_size = Vector2(120, 130)
-layout_mode = 2
-
-[node name="ItemUI15" parent="StorageInventory/GridContainer" instance=ExtResource("1_ifu88")]
-custom_minimum_size = Vector2(120, 130)
-layout_mode = 2
-
-[node name="ItemUI3" parent="StorageInventory/GridContainer" instance=ExtResource("1_ifu88")]
-custom_minimum_size = Vector2(120, 130)
-layout_mode = 2
-
-[node name="ItemUI4" parent="StorageInventory/GridContainer" instance=ExtResource("1_ifu88")]
-custom_minimum_size = Vector2(120, 130)
-layout_mode = 2
-
-[node name="ItemUI5" parent="StorageInventory/GridContainer" instance=ExtResource("1_ifu88")]
-custom_minimum_size = Vector2(120, 130)
-layout_mode = 2
-
-[node name="ItemUI6" parent="StorageInventory/GridContainer" instance=ExtResource("1_ifu88")]
-custom_minimum_size = Vector2(120, 130)
-layout_mode = 2
-
-[node name="ItemUI7" parent="StorageInventory/GridContainer" instance=ExtResource("1_ifu88")]
-custom_minimum_size = Vector2(120, 130)
-layout_mode = 2
-
-[node name="ItemUI8" parent="StorageInventory/GridContainer" instance=ExtResource("1_ifu88")]
-custom_minimum_size = Vector2(120, 130)
-layout_mode = 2
-
-[node name="ItemUI9" parent="StorageInventory/GridContainer" instance=ExtResource("1_ifu88")]
-custom_minimum_size = Vector2(120, 130)
-layout_mode = 2
-
-[node name="ItemUI10" parent="StorageInventory/GridContainer" instance=ExtResource("1_ifu88")]
-custom_minimum_size = Vector2(120, 130)
-layout_mode = 2
-
 [node name="BuildingOptions" type="ScrollContainer" parent="."]
 process_mode = 1
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 0.478
@@ -159,6 +47,3 @@ layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_2mook")
 text = "Склад"
 building = ExtResource("6_8haxy")
-
-[connection signal="mouse_entered" from="StorageInventory/TextureRect" to="StorageInventory/TextureRect" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="StorageInventory/TextureRect" to="StorageInventory/TextureRect" method="_on_mouse_exited"]

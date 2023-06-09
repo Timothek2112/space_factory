@@ -24,6 +24,6 @@ groundedZoom = 0.5
 [node name="Planet" parent="." instance=ExtResource("3_0nwqs")]
 position = Vector2(-558, -302)
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="." groups=["MainCanvas"]]
 
 [node name="MainUI" parent="CanvasLayer" instance=ExtResource("4_0geuq")]

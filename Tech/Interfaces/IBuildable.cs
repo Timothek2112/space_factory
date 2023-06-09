@@ -5,5 +5,5 @@ public interface IBuildable
 {
 	public bool built {get; set;}
 	public void Build();
-	public void ShowBluepring();
+	public void ShowBlueprint();
 }

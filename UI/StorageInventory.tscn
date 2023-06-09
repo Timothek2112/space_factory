@@ -1,0 +1,120 @@
+[gd_scene load_steps=7 format=3 uid="uid://bfb270vuvwh2b"]
+
+[ext_resource type="Script" path="res://UI/StorageInventory.cs" id="1_b3844"]
+[ext_resource type="Texture2D" uid="uid://d2idkaus8g6q4" path="res://UI/Sprites/MainPanel01.png" id="1_c61gg"]
+[ext_resource type="Script" path="res://UI/DraggableUI.cs" id="2_a3oss"]
+[ext_resource type="PackedScene" uid="uid://mqdfnh5jse4l" path="res://UI/ItemUI.tscn" id="3_gpaic"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e4pgm"]
+size = Vector2(626, 22.3008)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hs7p0"]
+bg_color = Color(0.0454842, 0.176541, 0.268026, 1)
+
+[node name="StorageInventory" type="NinePatchRect"]
+process_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -1151.0
+offset_top = -322.0
+offset_right = -435.0
+offset_bottom = 145.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("1_c61gg")
+script = ExtResource("1_b3844")
+itemSlot = ExtResource("3_gpaic")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+process_mode = 1
+texture_filter = 2
+layout_mode = 0
+offset_left = 22.0
+offset_top = -27.0
+offset_right = 691.0
+offset_bottom = 13.0
+scale = Vector2(1, 1.5)
+script = ExtResource("2_a3oss")
+
+[node name="Area2D" type="Area2D" parent="TextureRect"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TextureRect/Area2D"]
+position = Vector2(311, 29.8496)
+shape = SubResource("RectangleShape2D_e4pgm")
+
+[node name="Container" type="GridContainer" parent="."]
+process_mode = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 37.0
+offset_top = 26.0
+offset_right = 25.0
+offset_bottom = 10.0001
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+columns = 5
+
+[node name="ItemUI" parent="Container" instance=ExtResource("3_gpaic")]
+layout_mode = 2
+
+[node name="ItemUI2" parent="Container" instance=ExtResource("3_gpaic")]
+layout_mode = 2
+
+[node name="ItemUI11" parent="Container" instance=ExtResource("3_gpaic")]
+layout_mode = 2
+
+[node name="ItemUI12" parent="Container" instance=ExtResource("3_gpaic")]
+layout_mode = 2
+
+[node name="ItemUI13" parent="Container" instance=ExtResource("3_gpaic")]
+layout_mode = 2
+
+[node name="ItemUI14" parent="Container" instance=ExtResource("3_gpaic")]
+layout_mode = 2
+
+[node name="ItemUI15" parent="Container" instance=ExtResource("3_gpaic")]
+layout_mode = 2
+
+[node name="ItemUI3" parent="Container" instance=ExtResource("3_gpaic")]
+layout_mode = 2
+
+[node name="ItemUI4" parent="Container" instance=ExtResource("3_gpaic")]
+layout_mode = 2
+
+[node name="ItemUI5" parent="Container" instance=ExtResource("3_gpaic")]
+layout_mode = 2
+
+[node name="ItemUI6" parent="Container" instance=ExtResource("3_gpaic")]
+layout_mode = 2
+
+[node name="ItemUI7" parent="Container" instance=ExtResource("3_gpaic")]
+layout_mode = 2
+
+[node name="ItemUI8" parent="Container" instance=ExtResource("3_gpaic")]
+layout_mode = 2
+
+[node name="ItemUI9" parent="Container" instance=ExtResource("3_gpaic")]
+layout_mode = 2
+
+[node name="ItemUI10" parent="Container" instance=ExtResource("3_gpaic")]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 646.0
+offset_top = -1.0
+offset_right = 698.0
+offset_bottom = 36.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_hs7p0")
+text = "X"
+
+[connection signal="mouse_entered" from="TextureRect" to="TextureRect" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="TextureRect" to="TextureRect" method="_on_mouse_exited"]
+[connection signal="button_down" from="Button" to="." method="_on_button_button_down"]

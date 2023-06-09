@@ -6,5 +6,4 @@ public enum PlayerModeEnum
 	normal,
 	grounded,
 	building,
-	draggingPipe
 }

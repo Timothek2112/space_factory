@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Newtonsoft.Json;
 using System.Threading.Tasks;
+using System.Runtime.CompilerServices;
 
 public partial class BaseBuilding : Node2D, IPutable, IBuildable
 {
@@ -17,8 +18,8 @@ public partial class BaseBuilding : Node2D, IPutable, IBuildable
 	[Export] public Node2D Builded;
 	[Export] public Node2D Blueprint;
 	public float angleOnPlanet;
-	[Export]
-	public bool built {get; set;}
+	[Export] PackedScene inventoryScene;
+	[Export] public bool built {get; set;}
 
     public override void _Ready()
     {
@@ -27,6 +28,10 @@ public partial class BaseBuilding : Node2D, IPutable, IBuildable
 	public override void _Process(double delta){
 		base._Process(delta);
 		SetPosition();
+		if (built && buildedOn == null)
+		{
+			ShowBlueprint();
+		}
 	}
 
 	public void SetPosition(){
@@ -81,15 +86,28 @@ public partial class BaseBuilding : Node2D, IPutable, IBuildable
 
     public void Build()
     {
+		if (buildedOn == null)
+			return;
 		built = true;
 		Builded.Visible = true;
 		Blueprint.Visible = false;
     }
 
-    public void ShowBluepring()
+    public void ShowBlueprint()
     {
 		built = false;
 		Builded.Visible = false;
 		Blueprint.Visible = true;
     }
+
+	public void _on_touch_area_input_event(Node viewport, InputEvent @event, int shape_idx)
+	{
+		if (@event.IsActionReleased("Click"))
+		{
+			var instance = (StorageInventory)inventoryScene.Instantiate();
+			GetTree().GetFirstNodeInGroup("MainCanvas").AddChild(instance);
+			instance.SetSlots(inputSlots);
+			instance.ShowStoreInventory();
+		}
+	}
 }

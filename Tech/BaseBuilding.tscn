@@ -1,16 +1,21 @@
-[gd_scene load_steps=4 format=3 uid="uid://cmvdq7ibude70"]
+[gd_scene load_steps=6 format=3 uid="uid://cmvdq7ibude70"]
 
 [ext_resource type="Script" path="res://Tech/BaseBuilding.cs" id="1_yj357"]
+[ext_resource type="PackedScene" uid="uid://bfb270vuvwh2b" path="res://UI/StorageInventory.tscn" id="2_6wl8m"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_vja6j"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_iu0y7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nlthu"]
+size = Vector2(72, 125)
 
 [node name="BaseMine" type="Node2D" node_paths=PackedStringArray("Builded", "Blueprint")]
 script = ExtResource("1_yj357")
 id = -1
 Builded = NodePath("Builded")
 Blueprint = NodePath("Blueprint")
+inventoryScene = ExtResource("2_6wl8m")
 
 [node name="Builded" type="Sprite2D" parent="."]
 scale = Vector2(-70.6723, -124.688)
@@ -21,3 +26,11 @@ modulate = Color(0, 0.92549, 0.933333, 0.27451)
 position = Vector2(-0.5, -1.90735e-06)
 scale = Vector2(71, 124)
 texture = SubResource("PlaceholderTexture2D_iu0y7")
+
+[node name="TouchArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TouchArea"]
+position = Vector2(-1, -0.5)
+shape = SubResource("RectangleShape2D_nlthu")
+
+[connection signal="input_event" from="TouchArea" to="." method="_on_touch_area_input_event"]

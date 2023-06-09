@@ -3,12 +3,13 @@ using System;
 
 public partial class PlayerController : Node
 {
-	public PipeNode pipe;
-	public PipeNode pipeInFocus;
-	public PlayerModeEnum mode = PlayerModeEnum.normal;
-	public PlayerModeEnum prevMode = PlayerModeEnum.normal;
+    [Export] public PipeNode pipe;
+    [Export] public PipeNode pipeInFocus;
+	[Export] public PlayerModeEnum mode = PlayerModeEnum.normal;
+    [Export] public PlayerModeEnum prevMode = PlayerModeEnum.normal;
 	public IBuildable buildingToBuild;
-	public Planet groundedTo;
+	public bool isDraggingPipe = false;
+    [Export] public Planet groundedTo;
 
 	public override void _Ready(){
 		GetNode<CosmosController>("/root/CosmosController").PlayerGroundedChanged += OnPlayerGroundedChanged;
@@ -19,7 +20,7 @@ public partial class PlayerController : Node
 			mode = PlayerModeEnum.building;
 			buildingToBuild = building;
 			((BaseBuilding)buildingToBuild).buildedOn = groundedTo;
-			building.ShowBluepring();
+			building.ShowBlueprint();
 		}
 	}
 
@@ -47,19 +48,20 @@ public partial class PlayerController : Node
 				pipeInFocus.StartDragging();
 			}
 
-			if(mode == PlayerModeEnum.building){
-				Build();
-			}
-		}
+            if (mode == PlayerModeEnum.building)
+            {
+                Build();
+            }
+        }
 		if(Input.IsActionJustReleased("Click")){
 			EndDragIfNoFocus();
 			ConnectIfPossible();
-		}
+        }
 	}
 
 	private void EndDragIfNoFocus(){
 		if(pipeInFocus == null){
-			if(mode == PlayerModeEnum.draggingPipe)
+			if(isDraggingPipe)
 				pipe.EndDragging();
 			return;
 		}
@@ -68,7 +70,7 @@ public partial class PlayerController : Node
 	private void ConnectIfPossible(){
 		if(pipeInFocus == null)
 			return;
-		if(mode != PlayerModeEnum.draggingPipe)
+		if(!isDraggingPipe)
 			return;
 		if(pipeInFocus.isConnected){
 			pipe.EndDragging();
@@ -87,12 +89,12 @@ public partial class PlayerController : Node
 
 	public void StartDraggingPipe(PipeNode pipe){
 		this.pipe = pipe;
-		SetMode(PlayerModeEnum.draggingPipe);		
+		isDraggingPipe = true;
 	}
 
 	public void EndDraggingPipe(){
 		this.pipe = null;
-		ModeBack();
+		isDraggingPipe = false;
 	}
 
 	public void SetGrounded(Planet planet){
