@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://do1xp6y32ge16"]
+
+[ext_resource type="Texture2D" uid="uid://ci07nmmwo8wpi" path="res://UI/Sprites/Uislot.png" id="1_vcikh"]
+
+[node name="NinePatchRect" type="NinePatchRect"]
+texture_filter = 1
+custom_minimum_size = Vector2(120, 130)
+texture = ExtResource("1_vcikh")

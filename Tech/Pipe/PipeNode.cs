@@ -4,27 +4,22 @@ using System.Collections.Generic;
 
 public partial class PipeNode : Area2D
 {
-	[Export]
-	public bool isConnected;
-	[Export]
-	public PipeNode connectedTo;
-	[Export]
-	public Items itemsType;
-	[Export]
-	public bool isAnyResource;
+	[Export] public bool isConnected;
+	private PipeNode _connectedTo;
+	[Export] public PipeNode connectedTo
+	{
+		get { return _connectedTo; }
+		set { _connectedTo = value; isConnected = _connectedTo != null; }
+	}
+	[Export] public Items itemsType;
+	[Export] public bool isAnyResource;
 	public int itemsInPipe;
-	[Export]
-	bool mouseIn = false;
-	[Export]
-	public bool isInput;
+	[Export] public bool isInput;
 	Line2D line;
-	[Export]
-	PackedScene linePrefab;
+	[Export] PackedScene linePrefab;
 	PlayerController playerController;
-	[Export]
-	bool dragging;
-	[Export]
-	public float maxPipeLength = 10f;
+	[Export] bool dragging;
+	[Export] public float maxPipeLength = 10f;
 	public IPutable origin;
 
 	public override void _Ready()
@@ -41,16 +36,12 @@ public partial class PipeNode : Area2D
 	}
 
 	private void _on_mouse_entered(){
-		mouseIn = true;
 		playerController.pipeInFocus = this;
 	}
 
 	private void _on_mouse_exited(){
-		mouseIn = false;
 		playerController.pipeInFocus = null;
 	}
-
-	
 
 	private void LineDragging(){
 		if(!dragging)
@@ -81,20 +72,22 @@ public partial class PipeNode : Area2D
 	}
 
 	private void CreateLineIfNull(){
-		if(line == null){
-			line = (Line2D)linePrefab.Instantiate();
-			AddChild(line);
-		}
+		if (line != null)
+			return;
+
+		line = (Line2D)linePrefab.Instantiate();
+		AddChild(line);
+		
 	}
 
 	public void EndDragging(){
 		dragging = false;
-		playerController.EndDraggingPipe();
 	}
 
 	public void StartDragging(){
+		if (!playerController.CanStartDragPipe())
+			return;
 		dragging = true;
-		playerController.StartDraggingPipe(this);
 		if(isConnected){
 			connectedTo.Disconnect();
 			Disconnect();
@@ -102,8 +95,6 @@ public partial class PipeNode : Area2D
 	}
 
 	public void Disconnect(){
-		if(!isConnected)
-			return;
 		connectedTo = null;
 		isConnected = false;
 		if(line != null)
@@ -114,10 +105,8 @@ public partial class PipeNode : Area2D
 	}
 
 	public void Connect(PipeNode to){
-		isConnected = true;
 		connectedTo = to;
 		to.connectedTo = this;
-		to.isConnected = true;
 	}
 
 	public void ProcessItem(){

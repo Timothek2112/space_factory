@@ -26,6 +26,5 @@ public partial class BuildingListItem : Button
 		var instance = building.Instantiate();
 		GetNode("/root").AddChild(instance);
 		GetNode<PlayerController>("/root/PlayerController").EnableBuildingMode((IBuildable)instance);
-
 	}
 }

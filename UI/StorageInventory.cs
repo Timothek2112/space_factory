@@ -5,8 +5,17 @@ using System.Linq;
 
 public partial class StorageInventory : NinePatchRect
 {
-	public List<Slot> slots;
+    public List<Slot> slots;
+	public int slotsCount;
 	[Export] PackedScene itemSlot;
+	[Export] PackedScene slotBackground;
+	PlayerController playerController;
+
+    public override void _Ready()
+    {
+        base._Ready();
+		playerController = GetNode<PlayerController>("/root/PlayerController");
+    }
 
     public override void _Process(double delta)
     {
@@ -29,17 +38,23 @@ public partial class StorageInventory : NinePatchRect
         }
     }
 
-    public void SetSlots(List<Slot> slots)
+    public void SetSlots(ref List<Slot> slots, int slotsCount)
 	{
 		this.slots = slots;
+		this.slotsCount = slotsCount;
 	}
 
 	public void ShowStoreInventory()
 	{
 		var container = GetNode<Control>("Container");
+		var slotContainer = GetNode<Control>("SlotBackground");
 		foreach(var child in container.GetChildren())
 		{
 			container.RemoveChild(child);
+		}
+		foreach(var slot in slotContainer.GetChildren())
+		{
+			slotContainer.RemoveChild(slot);
 		}
 		foreach(var slot in slots)
 		{
@@ -50,10 +65,25 @@ public partial class StorageInventory : NinePatchRect
 			itemUI.uuid = slot.uuid;
 			container.AddChild(instance);
 		}
-	}
+		for(int i = 0; i < slotsCount; i++)
+		{
+			var instanceBackground = slotBackground.Instantiate();
+			slotContainer.AddChild(instanceBackground);
+        }
+    }
 
 	public void _on_button_button_down()
 	{
 		this.QueueFree();
 	}
+
+	public void _on_mouse_entered()
+	{
+		playerController.inventoryInFocus = this;
+    }
+
+    public void _on_mouse_exited()
+	{
+        playerController.inventoryInFocus = null;
+    }
 }

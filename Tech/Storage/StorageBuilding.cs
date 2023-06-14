@@ -30,7 +30,7 @@ public partial class StorageBuilding : BaseBuilding
 	}
 
 	public override void PutItem(PipeNode from){
-		
+		Print();
 		var slot = inputSlots.FirstOrDefault(p => p.type == from.itemsType && p.currentCount < p.capability);
 		if(slot == null){
 			slot = new Slot(from.itemsType, slotSize);
@@ -52,5 +52,13 @@ public partial class StorageBuilding : BaseBuilding
 			return false;
 		else
 			return true;
-	}	
+	}
+
+    public override void ShowInventory()
+	{
+        var instance = (StorageInventory)inventoryScene.Instantiate();
+        GetTree().GetFirstNodeInGroup("MainCanvas").AddChild(instance);
+        instance.SetSlots(ref inputSlots, slots);
+        instance.ShowStoreInventory();
+    }
 }

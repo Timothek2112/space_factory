@@ -1,0 +1,39 @@
+[gd_scene load_steps=3 format=3 uid="uid://djaamnjtow4ll"]
+
+[ext_resource type="Script" path="res://UI/ItemUIDraggable.cs" id="1_arhyj"]
+[ext_resource type="Texture2D" uid="uid://co7w3u5gqnacm" path="res://Icons/water_icon_inventory.png" id="2_00p3k"]
+
+[node name="ItemUI" type="Control"]
+process_mode = 1
+custom_minimum_size = Vector2(120, 130)
+layout_mode = 3
+anchor_left = 0.009
+anchor_top = 0.022
+anchor_right = 0.102
+anchor_bottom = 0.196
+offset_left = -11.368
+offset_top = -14.256
+offset_right = 9.49599
+offset_bottom = 12.992
+scale = Vector2(0.836319, 0.808188)
+script = ExtResource("1_arhyj")
+
+[node name="Count" type="Label" parent="."]
+modulate = Color(1, 1, 1, 0.329412)
+layout_mode = 0
+offset_left = 75.0
+offset_top = 108.0
+offset_right = 115.0
+offset_bottom = 134.0
+text = "0000"
+horizontal_alignment = 1
+
+[node name="Sprite" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0.32549)
+texture_filter = 1
+layout_mode = 0
+offset_left = 19.1315
+offset_top = 17.3227
+offset_right = 120.131
+offset_bottom = 115.323
+texture = ExtResource("2_00p3k")
