@@ -24,15 +24,12 @@ public partial class StorageInventory : NinePatchRect
 		var children = GetNode<Control>("Container").GetChildren().ToList();
 		foreach(var slot in origin.inputSlots)
 		{
-			var thisSlot = (ItemUI)children.FirstOrDefault(p => ((ItemUI)p).uuid == slot.uuid);
+			var thisSlot = (ItemUI)children.FirstOrDefault(p => ((ItemUI)p).slot == slot);
             if (thisSlot == null)
 			{
 				continue;
 			}
-			
 			thisSlot.count = slot.currentCount.ToString();
-
-			
         }
         if (origin.inputSlots.Count != children.Count)
         {
@@ -63,7 +60,7 @@ public partial class StorageInventory : NinePatchRect
 			var itemUI = (ItemUI)instance;
             itemUI.SetSprite(GD.Load<Texture2D>("res://Icons/water_icon_inventory.png"));
             itemUI.SetCount(slot.currentCount);
-			itemUI.uuid = slot.uuid;
+			itemUI.slot = slot;
 			container.AddChild(instance);
 		}
 		for(int i = 0; i < slotsCount; i++)

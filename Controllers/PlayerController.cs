@@ -19,12 +19,13 @@ public partial class PlayerController : Node
 		set { _draggingItem = value; isDraggingItem = value != null; }
 	}
 
-	[Export ]public bool isUIinFocus;
+	public bool isUIinFocus;
+	[Export] public bool isInventoryInFocus;
 	private StorageInventory _inventoryInFocus;
 	public StorageInventory inventoryInFocus
 	{
 		get { return _inventoryInFocus; }
-		set { _inventoryInFocus = value; isUIinFocus = value != null; }
+		set { _inventoryInFocus = value; isUIinFocus = value != null; isInventoryInFocus = value != null; }
 	}
 
 	[Export] public PipeNode pipeInFocus;
@@ -74,8 +75,6 @@ public partial class PlayerController : Node
 			TryBuild();
 		}
 		if (Input.IsActionJustReleased("Click")) {
-			GD.Print(_pipe);
-			GD.Print(isDraggingPipe);
 			EndDragIfNoFocus();
 			ConnectIfPossible();
 		}

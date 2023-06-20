@@ -15,8 +15,8 @@ public partial class StorageBuilding : BaseBuilding
 	{
 		base._Ready();
 		var json = (Json)GD.Load("res://Tech/Config/Storages.tres");
-		var mines = JsonConvert.DeserializeObject<List<StorageBuilding>>(json.Data.ToString());
-		var self = mines.FirstOrDefault(p => p.id == id);
+		var storages = JsonConvert.DeserializeObject<List<StorageBuilding>>(json.Data.ToString());
+		var self = storages.FirstOrDefault(p => p.id == id);
 		inputSlots = new List<Slot>(self.inputSlots);
 		outputSlots = new List<Slot>(self.outputSlots);
 		name = self.name;
@@ -29,21 +29,16 @@ public partial class StorageBuilding : BaseBuilding
 		base._Process(delta);
 	}
 
-	public override void PutItem(PipeNode from){
-		Print();
-		var slot = inputSlots.FirstOrDefault(p => p.type == from.itemsType && p.currentCount < p.capability);
+	public override int PutItem(Items type, int count){
+		var slot = inputSlots.FirstOrDefault(p => p.type == type && p.currentCount + count <= p.capability);
 		if(slot == null){
-			slot = new Slot(from.itemsType, slotSize);
+			if(inputSlots.Count >= slots)
+				return 0;
+			slot = new Slot(type, slotSize);
 			inputSlots.Add(slot);
 		}
-		slot.currentCount += 1;
-		from.itemsInPipe -= 1;
-		foreach(var islot in inputSlots){
-			Print(islot.currentCount);
-			Print(islot.type);
-			Print();
-		}
-		Print();
+		slot.currentCount += count;
+		return count;
 	}
 
 	public override bool CanAcceptItem(Items type, int count){
@@ -54,12 +49,12 @@ public partial class StorageBuilding : BaseBuilding
 			return true;
 	}
 
-    public override void ShowInventory()
+	public override void ShowInventory()
 	{
-        var instance = inventoryScene.Instantiate();
-        GetTree().GetFirstNodeInGroup("MainCanvas").AddChild(instance);
-        ((StorageInventory)instance).origin = this;
-        ((StorageInventory)instance).SetSlots(slots);
-        ((StorageInventory)instance).ShowStoreInventory();
-    }
+		var instance = inventoryScene.Instantiate();
+		GetTree().GetFirstNodeInGroup("MainCanvas").AddChild(instance);
+		((StorageInventory)instance).origin = this;
+		((StorageInventory)instance).SetSlots(slots);
+		((StorageInventory)instance).ShowStoreInventory();
+	}
 }

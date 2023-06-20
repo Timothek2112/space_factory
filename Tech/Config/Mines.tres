@@ -14,11 +14,10 @@ data = [{
 "capability": 100.0,
 "type": "rock"
 }]
-},
-{
+}, {
 "id": 1.0,
 "inputSlots": [],
-"itemsPerSecond": 3.0,
+"itemsPerSecond": 10.0,
 "miningResources": [{
 "count": 1.0,
 "type": "water"
@@ -28,8 +27,7 @@ data = [{
 "capability": 50.0,
 "type": "water"
 }]
-},
-{
+}, {
 "id": 2.0,
 "inputSlots": [],
 "itemsPerSecond": 1.0,

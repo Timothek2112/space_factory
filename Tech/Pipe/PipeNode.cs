@@ -14,6 +14,7 @@ public partial class PipeNode : Area2D
 	[Export] public Items itemsType;
 	[Export] public bool isAnyResource;
 	public int itemsInPipe;
+	[Export] public int maxItemsInPipe;
 	[Export] public bool isInput;
 	Line2D line;
 	[Export] PackedScene linePrefab;
@@ -121,28 +122,59 @@ public partial class PipeNode : Area2D
 
 	public void InputProcessing()
 	{
-		connectedTo.GiveItem(to: this);
-		if(itemsInPipe <= 0)
+		if(itemsInPipe == 0)
 			return;
+		
 		if(!origin.CanAcceptItem(itemsType, 1))
 			return;
-		origin.PutItem(from: this);
+		origin.PutItem(itemsType, 1);
+		RemoveItem(itemsType, 1);
 	}
 
 	public void OutputProcessing()
 	{
-		if(!connectedTo.origin.CanAcceptItem(itemsType, 1))
+		if(!origin.CanGiveItem(itemsType, 1))		
 			return;
-		origin.GiveItem(to: this); // TODO: Добавить время на передачу
+		
+		origin.RemoveItem(itemsType, 1);
+		PutItem(itemsType, 1);
+
+		if(!connectedTo.CanAcceptItem(itemsType, 1))
+			return;
+
+		connectedTo.PutItem(itemsType, 1);
+		RemoveItem(itemsType, 1);
 	}
 
-	public void GiveItem(PipeNode to){
-		if(to.itemsType != itemsType && !to.isAnyResource)
-			return; // TODO: Пока нихуя не происходит но скорее всего надо как-то уведомлять игрока, что трубы не правильные
-		if(itemsInPipe <= 0)
+	public bool CanAcceptItem(Items type, int count){
+		if(itemsType != type && !isAnyResource)
+			return false;
+		if(maxItemsInPipe < itemsInPipe + count)
+			return false;
+		return true;
+	}
+
+	public bool CanGiveItem(Items type, int count){
+		if(itemsType != type)
+			return false;
+		if(itemsInPipe < count)
+			return false;
+		return true;
+	}
+
+	public void RemoveItem(Items type, int count){
+		if(!CanGiveItem(type, count))
 			return;
-		to.itemsType = itemsType;
-		to.itemsInPipe += 1;
-		itemsInPipe -= 1;
+		itemsInPipe -= count;
+		if(itemsInPipe == 0 && isAnyResource)
+			itemsType = Items.any;
+	}
+
+	public void PutItem(Items type, int count){
+		if(!CanAcceptItem(type, count))
+			return;
+		itemsInPipe += count;
+		if(itemsType == Items.any)
+			itemsType = type;
 	}
 }

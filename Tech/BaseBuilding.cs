@@ -68,20 +68,8 @@ public partial class BaseBuilding : Node2D, IPutable, IBuildable
 		}
 	}
 
-	public virtual void PutItem(PipeNode from) {
-		if (from.itemsInPipe <= 0)
-			return;
-
-		var storageForItem = inputSlots.FirstOrDefault(p => p.type == from.itemsType && p.currentCount < p.capability);
-		if (storageForItem == null)
-			return;
-
-		from.itemsInPipe -= 1;
-		storageForItem.currentCount += 1;
-	}
-
 	public virtual bool CanAcceptItem(Items type, int count) {
-		var storageForItem = inputSlots.FirstOrDefault(p => p.type == type && p.currentCount < p.capability);
+		var storageForItem = inputSlots.FirstOrDefault(p => p.type == type && p.currentCount + count < p.capability);
 		if (storageForItem == null)
 			return false;
 		return true;
@@ -117,5 +105,39 @@ public partial class BaseBuilding : Node2D, IPutable, IBuildable
         ((StorageInventory)instance).origin = this;
         GetTree().GetFirstNodeInGroup("MainCanvas").AddChild(((StorageInventory)instance));
         ((StorageInventory)instance).ShowStoreInventory();
+    }
+
+	/// <summary>
+	///		Добавляет в инвентарь предметы и возвращает количество предметов, которые удалось добавить
+	/// </summary>
+    public virtual int PutItem(Items type, int count)
+    {
+		var slotForItems = inputSlots.FirstOrDefault(p => p.type == type);
+		if(slotForItems == null)
+			return 0;
+		if(slotForItems.currentCount + count < slotForItems.capability)
+		{
+			slotForItems.currentCount += count;
+			return count;
+		}
+		var canAddItemsCount = slotForItems.capability - slotForItems.currentCount;
+		slotForItems.currentCount += canAddItemsCount;
+		return canAddItemsCount;
+    }
+
+    public virtual void RemoveItem(Items type, int count)
+    {
+		var slotOfItem = inputSlots.FirstOrDefault(p => p.type == type && p.currentCount > count);
+		if(slotOfItem == null)
+			return;
+		slotOfItem.currentCount -= count;
+    }
+
+    public virtual bool CanGiveItem(Items type, int count)
+    {
+		var slotOfItem = inputSlots.FirstOrDefault(p => (p.type == type || type == Items.any) && p.currentCount > count);
+		if(slotOfItem == null)
+			return false;
+		return true;
     }
 }

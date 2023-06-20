@@ -3,7 +3,7 @@ using System;
 
 public partial class ItemUI : Control
 {
-	public string uuid;
+	public Slot slot;
 	public string count
 	{
 		get

@@ -21,8 +21,18 @@ public partial class ItemUIDraggable : Control
 		countNode.Text = itemUI.count.ToString();
 		if (Input.IsActionJustReleased("Click"))
 		{
+			TryPutItem();
 			playerController.EndDraggingItem();
 			this.QueueFree();
 		}
+	}
+
+	public bool TryPutItem(){
+		if(!playerController.isInventoryInFocus)
+			return false;
+
+		var transferedItems = playerController.inventoryInFocus.origin.PutItem(itemUI.slot.type, int.Parse(itemUI.count));
+		itemUI.slot.currentCount -= transferedItems;
+		return true;
 	}
 }

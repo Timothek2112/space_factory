@@ -49,4 +49,29 @@ public partial class Mine : BaseBuilding
 				storageForResource.currentCount += 1;
 		}
 	}
+
+	public override void ShowInventory()
+	{
+		throw new NotImplementedException();
+    }
+
+	public override int PutItem(Items type, int count)
+    {
+		throw new NotImplementedException();
+    }
+
+	public override void RemoveItem(Items type, int count)
+    {
+		var slotOfItem = outputSlots.FirstOrDefault(p => p.type == type && p.currentCount > count);
+		if(slotOfItem == null)
+			return;
+		slotOfItem.currentCount -= count;
+    }
+	
+	public override bool CanGiveItem(Items type, int count){
+		var slotOfItem = outputSlots.FirstOrDefault(p => (p.type == type || type == Items.any) && p.currentCount > count);
+		if(slotOfItem == null)
+			return false;
+		return true;
+	}
 }

@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://crmjla3im560"]
 
 [ext_resource type="PackedScene" uid="uid://cvc3cst8hcdp6" path="res://UI/BuildingListItem.tscn" id="2_fcvmi"]
-[ext_resource type="PackedScene" uid="uid://bfa7n7nwdwm8w" path="res://Tech/Mine/RockMine.tscn" id="5_eq4m6"]
+[ext_resource type="PackedScene" uid="uid://bqbln1pto5y0w" path="res://Tech/Mine/WaterMine.tscn" id="2_fm1ne"]
 [ext_resource type="PackedScene" uid="uid://c5t6bqpmrslsf" path="res://Tech/Storage/StorageBuilding.tscn" id="6_8haxy"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2mook"]
@@ -39,7 +39,7 @@ custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_2mook")
 text = "Каменная шахта"
-building = ExtResource("5_eq4m6")
+building = ExtResource("2_fm1ne")
 
 [node name="BuildRockMine10" parent="BuildingOptions/VBoxContainer" instance=ExtResource("2_fcvmi")]
 custom_minimum_size = Vector2(0, 60)

@@ -7,6 +7,7 @@
 [node name="WoodMine" instance=ExtResource("1_v2ej0")]
 script = ExtResource("2_8b08l")
 id = 2
+inventoryScene = null
 
 [node name="StartNode" parent="." index="1" instance=ExtResource("3_fk2wp")]
 position = Vector2(38, -15)
