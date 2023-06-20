@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://bfb270vuvwh2b"]
 
 [ext_resource type="Texture2D" uid="uid://cdy55h6s5ys1m" path="res://UI/Sprites/backgroundPanel.png" id="1_5pmry"]
-[ext_resource type="Script" path="res://UI/StorageInventory.cs" id="1_b3844"]
+[ext_resource type="Script" path="res://UI/StorageInventory.cs" id="2_1ndq2"]
 [ext_resource type="Script" path="res://UI/DraggableUI.cs" id="2_a3oss"]
 [ext_resource type="PackedScene" uid="uid://mqdfnh5jse4l" path="res://UI/ItemUI.tscn" id="3_gpaic"]
 [ext_resource type="PackedScene" uid="uid://do1xp6y32ge16" path="res://UI/SlotBackground.tscn" id="4_8wgtp"]
@@ -35,7 +35,7 @@ patch_margin_left = 4
 patch_margin_top = 9
 patch_margin_right = 4
 patch_margin_bottom = 3
-script = ExtResource("1_b3844")
+script = ExtResource("2_1ndq2")
 itemSlot = ExtResource("3_gpaic")
 slotBackground = ExtResource("4_8wgtp")
 

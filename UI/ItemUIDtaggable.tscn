@@ -5,6 +5,7 @@
 
 [node name="ItemUI" type="Control"]
 process_mode = 1
+z_index = 10
 custom_minimum_size = Vector2(120, 130)
 layout_mode = 3
 anchor_left = 0.009

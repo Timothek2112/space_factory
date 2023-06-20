@@ -56,9 +56,10 @@ public partial class StorageBuilding : BaseBuilding
 
     public override void ShowInventory()
 	{
-        var instance = (StorageInventory)inventoryScene.Instantiate();
+        var instance = inventoryScene.Instantiate();
         GetTree().GetFirstNodeInGroup("MainCanvas").AddChild(instance);
-        instance.SetSlots(ref inputSlots, slots);
-        instance.ShowStoreInventory();
+        ((StorageInventory)instance).origin = this;
+        ((StorageInventory)instance).SetSlots(slots);
+        ((StorageInventory)instance).ShowStoreInventory();
     }
 }

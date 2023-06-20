@@ -12,9 +12,9 @@ public partial class BaseBuilding : Node2D, IPutable, IBuildable
 	[Export]
 	public int id;
 	public string name;
-	public List<Slot> inputSlots = new List<Slot>();
-	public List<Slot> outputSlots = new List<Slot>();
-	[Export] public Planet buildedOn;
+	public List<Slot> inputSlots { get; set; } = new List<Slot>();
+    public List<Slot> outputSlots { get; set; } = new List<Slot>();
+    [Export] public Planet buildedOn;
 	[Export] public Node2D Builded;
 	[Export] public Node2D Blueprint;
 	public float angleOnPlanet;
@@ -113,9 +113,9 @@ public partial class BaseBuilding : Node2D, IPutable, IBuildable
 
 	public virtual void ShowInventory()
 	{
-        var instance = (StorageInventory)inventoryScene.Instantiate();
-        GetTree().GetFirstNodeInGroup("MainCanvas").AddChild(instance);
-        instance.SetSlots(ref inputSlots, inputSlots.Count);
-        instance.ShowStoreInventory();
+        var instance = inventoryScene.Instantiate();
+        ((StorageInventory)instance).origin = this;
+        GetTree().GetFirstNodeInGroup("MainCanvas").AddChild(((StorageInventory)instance));
+        ((StorageInventory)instance).ShowStoreInventory();
     }
 }

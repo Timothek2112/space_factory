@@ -40,8 +40,9 @@ public partial class ItemUI : Control
         {
             if (!playerController.CanStartDragItem())
                 return;
-            var instance = itemDraggable.Instantiate();
-            playerController.StartDraggingItem((ItemUIDraggable)instance);
+            var instance = (ItemUIDraggable)itemDraggable.Instantiate();
+			instance.itemUI = this;
+            playerController.StartDraggingItem(instance);
             GetTree().GetFirstNodeInGroup("MainUI").AddChild(instance);
 
         }

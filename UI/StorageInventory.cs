@@ -2,10 +2,11 @@ using Godot;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using static Godot.GD;
 
 public partial class StorageInventory : NinePatchRect
 {
-    public List<Slot> slots;
+	public IPutable origin;
 	public int slotsCount;
 	[Export] PackedScene itemSlot;
 	[Export] PackedScene slotBackground;
@@ -20,9 +21,9 @@ public partial class StorageInventory : NinePatchRect
     public override void _Process(double delta)
     {
         base._Process(delta);
-		foreach(var slot in slots)
+		var children = GetNode<Control>("Container").GetChildren().ToList();
+		foreach(var slot in origin.inputSlots)
 		{
-			var children = GetNode<Control>("Container").GetChildren().ToList();
 			var thisSlot = (ItemUI)children.FirstOrDefault(p => ((ItemUI)p).uuid == slot.uuid);
             if (thisSlot == null)
 			{
@@ -31,16 +32,16 @@ public partial class StorageInventory : NinePatchRect
 			
 			thisSlot.count = slot.currentCount.ToString();
 
-			if(slots.Count != children.Count)
-			{
-				ShowStoreInventory();
-			}
+			
+        }
+        if (origin.inputSlots.Count != children.Count)
+        {
+            ShowStoreInventory();
         }
     }
 
-    public void SetSlots(ref List<Slot> slots, int slotsCount)
+    public void SetSlots(int slotsCount)
 	{
-		this.slots = slots;
 		this.slotsCount = slotsCount;
 	}
 
@@ -56,7 +57,7 @@ public partial class StorageInventory : NinePatchRect
 		{
 			slotContainer.RemoveChild(slot);
 		}
-		foreach(var slot in slots)
+		foreach(var slot in origin.inputSlots)
 		{
 			var instance = itemSlot.Instantiate();
 			var itemUI = (ItemUI)instance;
