@@ -21,8 +21,8 @@ public partial class PlayerController : Node
 
 	public bool isUIinFocus;
 	[Export] public bool isInventoryInFocus;
-	private StorageInventory _inventoryInFocus;
-	public StorageInventory inventoryInFocus
+	private StorageInventoryUI _inventoryInFocus;
+	public StorageInventoryUI inventoryInFocus
 	{
 		get { return _inventoryInFocus; }
 		set { _inventoryInFocus = value; isUIinFocus = value != null; isInventoryInFocus = value != null; }
@@ -38,7 +38,12 @@ public partial class PlayerController : Node
 		GetNode<CosmosController>("/root/CosmosController").PlayerGroundedChanged += OnPlayerGroundedChanged;
 	}
 
-	public void EnableBuildingMode(IBuildable building) {
+    public override void _Process(double delta)
+    {
+        base._Process(delta);
+    }
+
+    public void EnableBuildingMode(IBuildable building) {
 		if (mode == PlayerModeEnum.grounded) {
 			mode = PlayerModeEnum.building;
 			buildingToBuild = building;

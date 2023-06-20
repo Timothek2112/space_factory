@@ -1,19 +1,16 @@
-[gd_scene load_steps=9 format=3 uid="uid://bfb270vuvwh2b"]
+[gd_scene load_steps=8 format=3 uid="uid://cvc3wfa3cwd1h"]
 
-[ext_resource type="Texture2D" uid="uid://cdy55h6s5ys1m" path="res://UI/Sprites/backgroundPanel.png" id="1_5pmry"]
-[ext_resource type="Script" path="res://UI/StorageInventory.cs" id="2_1ndq2"]
-[ext_resource type="Script" path="res://UI/DraggableUI.cs" id="2_a3oss"]
-[ext_resource type="PackedScene" uid="uid://mqdfnh5jse4l" path="res://UI/ItemUI.tscn" id="3_gpaic"]
-[ext_resource type="PackedScene" uid="uid://do1xp6y32ge16" path="res://UI/SlotBackground.tscn" id="4_8wgtp"]
+[ext_resource type="Texture2D" uid="uid://cdy55h6s5ys1m" path="res://UI/Sprites/backgroundPanel.png" id="1_aaj1p"]
+[ext_resource type="Script" path="res://UI/Buildings/StorageInventoryUI.cs" id="2_ijfbq"]
+[ext_resource type="PackedScene" uid="uid://mqdfnh5jse4l" path="res://UI/ItemUI.tscn" id="3_ssjq8"]
+[ext_resource type="PackedScene" uid="uid://do1xp6y32ge16" path="res://UI/SlotBackground.tscn" id="4_1cpkl"]
+[ext_resource type="Script" path="res://UI/DraggableUI.cs" id="5_wjnw3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e4pgm"]
 size = Vector2(626, 22.3008)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hs7p0"]
-bg_color = Color(0.0454842, 0.176541, 0.268026, 1)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_gsfkq"]
-size = Vector2(716, 469)
+bg_color = Color(0.0470588, 0.176471, 0.266667, 1)
 
 [node name="StorageInventory" type="NinePatchRect"]
 process_mode = 1
@@ -29,15 +26,17 @@ offset_right = -435.0
 offset_bottom = 145.0
 grow_horizontal = 0
 grow_vertical = 2
-texture = ExtResource("1_5pmry")
+focus_mode = 2
+mouse_filter = 0
+texture = ExtResource("1_aaj1p")
 region_rect = Rect2(-0.467117, -0.251582, 65.1089, 64.0297)
 patch_margin_left = 4
 patch_margin_top = 9
 patch_margin_right = 4
 patch_margin_bottom = 3
-script = ExtResource("2_1ndq2")
-itemSlot = ExtResource("3_gpaic")
-slotBackground = ExtResource("4_8wgtp")
+script = ExtResource("2_ijfbq")
+itemSlot = ExtResource("3_ssjq8")
+slotBackground = ExtResource("4_1cpkl")
 
 [node name="SlotBackground" type="GridContainer" parent="."]
 process_mode = 1
@@ -55,9 +54,6 @@ theme_override_constants/h_separation = 10
 theme_override_constants/v_separation = 10
 columns = 5
 
-[node name="NinePatchRect" parent="SlotBackground" instance=ExtResource("4_8wgtp")]
-layout_mode = 2
-
 [node name="TextureRect" type="TextureRect" parent="."]
 process_mode = 1
 texture_filter = 2
@@ -67,7 +63,7 @@ offset_top = -27.0
 offset_right = 691.0
 offset_bottom = 13.0
 scale = Vector2(1, 1.5)
-script = ExtResource("2_a3oss")
+script = ExtResource("5_wjnw3")
 
 [node name="Area2D" type="Area2D" parent="TextureRect"]
 
@@ -91,49 +87,49 @@ theme_override_constants/h_separation = 10
 theme_override_constants/v_separation = 10
 columns = 5
 
-[node name="ItemUI" parent="Container" instance=ExtResource("3_gpaic")]
+[node name="ItemUI" parent="Container" instance=ExtResource("3_ssjq8")]
 layout_mode = 2
 
-[node name="ItemUI2" parent="Container" instance=ExtResource("3_gpaic")]
+[node name="ItemUI2" parent="Container" instance=ExtResource("3_ssjq8")]
 layout_mode = 2
 
-[node name="ItemUI11" parent="Container" instance=ExtResource("3_gpaic")]
+[node name="ItemUI11" parent="Container" instance=ExtResource("3_ssjq8")]
 layout_mode = 2
 
-[node name="ItemUI12" parent="Container" instance=ExtResource("3_gpaic")]
+[node name="ItemUI12" parent="Container" instance=ExtResource("3_ssjq8")]
 layout_mode = 2
 
-[node name="ItemUI13" parent="Container" instance=ExtResource("3_gpaic")]
+[node name="ItemUI13" parent="Container" instance=ExtResource("3_ssjq8")]
 layout_mode = 2
 
-[node name="ItemUI14" parent="Container" instance=ExtResource("3_gpaic")]
+[node name="ItemUI14" parent="Container" instance=ExtResource("3_ssjq8")]
 layout_mode = 2
 
-[node name="ItemUI15" parent="Container" instance=ExtResource("3_gpaic")]
+[node name="ItemUI15" parent="Container" instance=ExtResource("3_ssjq8")]
 layout_mode = 2
 
-[node name="ItemUI3" parent="Container" instance=ExtResource("3_gpaic")]
+[node name="ItemUI3" parent="Container" instance=ExtResource("3_ssjq8")]
 layout_mode = 2
 
-[node name="ItemUI4" parent="Container" instance=ExtResource("3_gpaic")]
+[node name="ItemUI4" parent="Container" instance=ExtResource("3_ssjq8")]
 layout_mode = 2
 
-[node name="ItemUI5" parent="Container" instance=ExtResource("3_gpaic")]
+[node name="ItemUI5" parent="Container" instance=ExtResource("3_ssjq8")]
 layout_mode = 2
 
-[node name="ItemUI6" parent="Container" instance=ExtResource("3_gpaic")]
+[node name="ItemUI6" parent="Container" instance=ExtResource("3_ssjq8")]
 layout_mode = 2
 
-[node name="ItemUI7" parent="Container" instance=ExtResource("3_gpaic")]
+[node name="ItemUI7" parent="Container" instance=ExtResource("3_ssjq8")]
 layout_mode = 2
 
-[node name="ItemUI8" parent="Container" instance=ExtResource("3_gpaic")]
+[node name="ItemUI8" parent="Container" instance=ExtResource("3_ssjq8")]
 layout_mode = 2
 
-[node name="ItemUI9" parent="Container" instance=ExtResource("3_gpaic")]
+[node name="ItemUI9" parent="Container" instance=ExtResource("3_ssjq8")]
 layout_mode = 2
 
-[node name="ItemUI10" parent="Container" instance=ExtResource("3_gpaic")]
+[node name="ItemUI10" parent="Container" instance=ExtResource("3_ssjq8")]
 layout_mode = 2
 
 [node name="Button" type="Button" parent="."]
@@ -145,16 +141,8 @@ offset_bottom = 36.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_hs7p0")
 text = "X"
 
-[node name="Area2D" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(358, 231.5)
-shape = SubResource("RectangleShape2D_gsfkq")
-
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
 [connection signal="mouse_entered" from="TextureRect" to="TextureRect" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="TextureRect" to="TextureRect" method="_on_mouse_exited"]
 [connection signal="button_down" from="Button" to="." method="_on_button_button_down"]
-[connection signal="mouse_entered" from="Area2D" to="." method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="Area2D" to="." method="_on_mouse_exited"]

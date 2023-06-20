@@ -17,6 +17,7 @@ offset_top = -14.256
 offset_right = 9.49599
 offset_bottom = 12.992
 scale = Vector2(0.836319, 0.808188)
+mouse_filter = 1
 script = ExtResource("1_wqmfq")
 itemDraggable = ExtResource("2_7gxtp")
 
@@ -34,8 +35,8 @@ texture_filter = 1
 layout_mode = 0
 offset_left = 11.0
 offset_top = 10.0
-offset_right = 112.0
-offset_bottom = 108.0
+offset_right = 103.0
+offset_bottom = 104.0
 texture = ExtResource("1_xqy2w")
 
 [connection signal="gui_input" from="Sprite" to="." method="_on_sprite_gui_input"]

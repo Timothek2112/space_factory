@@ -1,0 +1,121 @@
+[gd_scene load_steps=6 format=3 uid="uid://dgedlji0jjrpa"]
+
+[ext_resource type="Texture2D" uid="uid://cdy55h6s5ys1m" path="res://UI/Sprites/backgroundPanel.png" id="1_k5w7l"]
+[ext_resource type="PackedScene" uid="uid://do1xp6y32ge16" path="res://UI/SlotBackground.tscn" id="2_p7xwy"]
+[ext_resource type="Script" path="res://UI/Buildings/ProductingInventoryUI.cs" id="2_qpclu"]
+[ext_resource type="PackedScene" uid="uid://mqdfnh5jse4l" path="res://UI/ItemUI.tscn" id="3_4bibf"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c4nox"]
+bg_color = Color(0.0470588, 0.176471, 0.266667, 1)
+
+[node name="ProductingInventory" type="NinePatchRect"]
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -5.0
+offset_bottom = -9.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+texture = ExtResource("1_k5w7l")
+patch_margin_left = 4
+patch_margin_top = 8
+patch_margin_right = 3
+patch_margin_bottom = 3
+script = ExtResource("2_qpclu")
+itemSlot = ExtResource("3_4bibf")
+slotBackground = ExtResource("2_p7xwy")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 0
+offset_right = 1057.0
+offset_bottom = 67.0
+texture = ExtResource("1_k5w7l")
+patch_margin_left = 4
+patch_margin_top = 8
+patch_margin_right = 3
+patch_margin_bottom = 2
+
+[node name="InputSlots" type="GridContainer" parent="."]
+layout_mode = 0
+offset_left = 215.0
+offset_top = 75.0
+offset_right = 459.0
+offset_bottom = 634.0
+
+[node name="NinePatchRect3" parent="InputSlots" instance=ExtResource("2_p7xwy")]
+layout_mode = 2
+
+[node name="NinePatchRect4" parent="InputSlots" instance=ExtResource("2_p7xwy")]
+layout_mode = 2
+
+[node name="NinePatchRect5" parent="InputSlots" instance=ExtResource("2_p7xwy")]
+layout_mode = 2
+
+[node name="Input" type="GridContainer" parent="."]
+layout_mode = 0
+offset_left = 212.0
+offset_top = 74.0
+offset_right = 338.0
+offset_bottom = 606.0
+
+[node name="ItemUI2" parent="Input" instance=ExtResource("3_4bibf")]
+layout_mode = 2
+
+[node name="ItemUI3" parent="Input" instance=ExtResource("3_4bibf")]
+layout_mode = 2
+
+[node name="ItemUI4" parent="Input" instance=ExtResource("3_4bibf")]
+layout_mode = 2
+
+[node name="ItemUI5" parent="Input" instance=ExtResource("3_4bibf")]
+layout_mode = 2
+
+[node name="OutputSlots" type="GridContainer" parent="."]
+layout_mode = 0
+offset_left = 789.0
+offset_top = 75.0
+offset_right = 916.0
+offset_bottom = 569.0
+
+[node name="NinePatchRect" parent="OutputSlots" instance=ExtResource("2_p7xwy")]
+layout_mode = 2
+
+[node name="NinePatchRect2" parent="OutputSlots" instance=ExtResource("2_p7xwy")]
+layout_mode = 2
+
+[node name="NinePatchRect3" parent="OutputSlots" instance=ExtResource("2_p7xwy")]
+layout_mode = 2
+
+[node name="NinePatchRect4" parent="OutputSlots" instance=ExtResource("2_p7xwy")]
+layout_mode = 2
+
+[node name="Output" type="GridContainer" parent="."]
+layout_mode = 0
+offset_left = 788.0
+offset_top = 74.0
+offset_right = 915.0
+offset_bottom = 645.0
+
+[node name="ItemUI" parent="Output" instance=ExtResource("3_4bibf")]
+layout_mode = 2
+
+[node name="ItemUI2" parent="Output" instance=ExtResource("3_4bibf")]
+layout_mode = 2
+
+[node name="ItemUI3" parent="Output" instance=ExtResource("3_4bibf")]
+layout_mode = 2
+
+[node name="ItemUI4" parent="Output" instance=ExtResource("3_4bibf")]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1055.0
+offset_top = 3.0
+offset_right = 1148.0
+offset_bottom = 69.0
+theme_override_font_sizes/font_size = 33
+theme_override_styles/normal = SubResource("StyleBoxFlat_c4nox")
+text = "X"

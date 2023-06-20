@@ -1,7 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://cmvdq7ibude70"]
+[gd_scene load_steps=6 format=3 uid="uid://d00d7x72qhsd2"]
 
 [ext_resource type="Script" path="res://Tech/BaseBuilding.cs" id="1_yj357"]
-[ext_resource type="PackedScene" uid="uid://bfb270vuvwh2b" path="res://UI/StorageInventory.tscn" id="2_6wl8m"]
+[ext_resource type="PackedScene" uid="uid://bfb270vuvwh2b" path="res://UI/Buildings/StorageInventory.tscn" id="2_irwc5"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_vja6j"]
 
@@ -15,7 +15,7 @@ script = ExtResource("1_yj357")
 id = -1
 Builded = NodePath("Builded")
 Blueprint = NodePath("Blueprint")
-inventoryScene = ExtResource("2_6wl8m")
+inventoryScene = ExtResource("2_irwc5")
 
 [node name="Builded" type="Sprite2D" parent="."]
 scale = Vector2(-70.6723, -124.688)

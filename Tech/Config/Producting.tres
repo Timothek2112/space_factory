@@ -1,0 +1,23 @@
+[gd_resource type="JSON" format=3 uid="uid://cgb5fr28x1im"]
+
+[resource]
+data = [{
+"id": 0.0,
+"inputSlots": [{
+"capability": 20.0,
+"type": "water"
+}, {
+"capability": 10.0,
+"type": "rock"
+}],
+"itemsPerSecond": 1.0,
+"name": "Изготовитель Гладкого Камня",
+"outputSlots": [{
+"capability": 100.0,
+"type": "formStone"
+}],
+"productingResources": [{
+"count": 10.0,
+"type": "formStone"
+}]
+}]

@@ -62,14 +62,14 @@ public partial class Mine : BaseBuilding
 
 	public override void RemoveItem(Items type, int count)
     {
-		var slotOfItem = outputSlots.FirstOrDefault(p => p.type == type && p.currentCount > count);
+		var slotOfItem = outputSlots.FirstOrDefault(p => p.type == type && p.currentCount >= count);
 		if(slotOfItem == null)
 			return;
 		slotOfItem.currentCount -= count;
     }
 	
 	public override bool CanGiveItem(Items type, int count){
-		var slotOfItem = outputSlots.FirstOrDefault(p => (p.type == type || type == Items.any) && p.currentCount > count);
+		var slotOfItem = outputSlots.FirstOrDefault(p => (p.type == type || type == Items.any) && p.currentCount >= count);
 		if(slotOfItem == null)
 			return false;
 		return true;

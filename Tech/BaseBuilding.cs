@@ -69,7 +69,7 @@ public partial class BaseBuilding : Node2D, IPutable, IBuildable
 	}
 
 	public virtual bool CanAcceptItem(Items type, int count) {
-		var storageForItem = inputSlots.FirstOrDefault(p => p.type == type && p.currentCount + count < p.capability);
+		var storageForItem = inputSlots.FirstOrDefault(p => p.type == type && p.currentCount + count <= p.capability);
 		if (storageForItem == null)
 			return false;
 		return true;
@@ -102,9 +102,9 @@ public partial class BaseBuilding : Node2D, IPutable, IBuildable
 	public virtual void ShowInventory()
 	{
         var instance = inventoryScene.Instantiate();
-        ((StorageInventory)instance).origin = this;
-        GetTree().GetFirstNodeInGroup("MainCanvas").AddChild(((StorageInventory)instance));
-        ((StorageInventory)instance).ShowStoreInventory();
+        ((StorageInventoryUI)instance).origin = this;
+        GetTree().GetFirstNodeInGroup("MainCanvas").AddChild(((StorageInventoryUI)instance));
+        ((StorageInventoryUI)instance).ShowInventory();
     }
 
 	/// <summary>
@@ -115,7 +115,7 @@ public partial class BaseBuilding : Node2D, IPutable, IBuildable
 		var slotForItems = inputSlots.FirstOrDefault(p => p.type == type);
 		if(slotForItems == null)
 			return 0;
-		if(slotForItems.currentCount + count < slotForItems.capability)
+		if(slotForItems.currentCount + count <= slotForItems.capability)
 		{
 			slotForItems.currentCount += count;
 			return count;
@@ -127,7 +127,7 @@ public partial class BaseBuilding : Node2D, IPutable, IBuildable
 
     public virtual void RemoveItem(Items type, int count)
     {
-		var slotOfItem = inputSlots.FirstOrDefault(p => p.type == type && p.currentCount > count);
+		var slotOfItem = inputSlots.FirstOrDefault(p => p.type == type && p.currentCount >= count);
 		if(slotOfItem == null)
 			return;
 		slotOfItem.currentCount -= count;
@@ -135,7 +135,7 @@ public partial class BaseBuilding : Node2D, IPutable, IBuildable
 
     public virtual bool CanGiveItem(Items type, int count)
     {
-		var slotOfItem = inputSlots.FirstOrDefault(p => (p.type == type || type == Items.any) && p.currentCount > count);
+		var slotOfItem = inputSlots.FirstOrDefault(p => (p.type == type || type == Items.any) && p.currentCount >= count);
 		if(slotOfItem == null)
 			return false;
 		return true;

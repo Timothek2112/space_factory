@@ -7,4 +7,5 @@ public enum Items
 	rock,
 	wood,
 	water,
+	formStone,
 }

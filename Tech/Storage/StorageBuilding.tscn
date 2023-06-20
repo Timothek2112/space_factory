@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://c5t6bqpmrslsf"]
 
-[ext_resource type="PackedScene" uid="uid://cmvdq7ibude70" path="res://Tech/BaseBuilding.tscn" id="1_ded30"]
+[ext_resource type="PackedScene" uid="uid://d00d7x72qhsd2" path="res://Tech/BaseBuilding.tscn" id="1_ded30"]
 [ext_resource type="Script" path="res://Tech/Storage/StorageBuilding.cs" id="2_1222p"]
 [ext_resource type="PackedScene" uid="uid://fk0j1na65wql" path="res://Tech/Pipe/PipeNode.tscn" id="2_8104v"]
 
