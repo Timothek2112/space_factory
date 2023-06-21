@@ -7,7 +7,6 @@
 [node name="RockMine" instance=ExtResource("1_3dyr0")]
 script = ExtResource("2_wixbg")
 id = 0
-inventoryScene = null
 
 [node name="StartNode" parent="." index="1" instance=ExtResource("2_kkrmo")]
 position = Vector2(38, -15)

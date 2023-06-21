@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://lk3ldsjleytn"]
 
-[ext_resource type="PackedScene" uid="uid://d00d7x72qhsd2" path="res://Tech/BaseBuilding.tscn" id="1_am2jh"]
+[ext_resource type="PackedScene" uid="uid://cmvdq7ibude70" path="res://Tech/BaseBuilding.tscn" id="1_am2jh"]
 [ext_resource type="Script" path="res://Tech/Producting/ProductingBuilding.cs" id="2_448a7"]
 [ext_resource type="PackedScene" uid="uid://fk0j1na65wql" path="res://Tech/Pipe/PipeNode.tscn" id="2_igw0v"]
 [ext_resource type="PackedScene" uid="uid://dgedlji0jjrpa" path="res://UI/Buildings/ProductingInventory.tscn" id="3_klda8"]

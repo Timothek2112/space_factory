@@ -1,13 +1,12 @@
 [gd_scene load_steps=4 format=3 uid="uid://bqbln1pto5y0w"]
 
-[ext_resource type="PackedScene" uid="uid://d00d7x72qhsd2" path="res://Tech/BaseBuilding.tscn" id="1_ucmaj"]
+[ext_resource type="PackedScene" uid="uid://cmvdq7ibude70" path="res://Tech/BaseBuilding.tscn" id="1_ucmaj"]
 [ext_resource type="Script" path="res://Tech/Mine/Mine.cs" id="2_qp2o6"]
 [ext_resource type="PackedScene" uid="uid://fk0j1na65wql" path="res://Tech/Pipe/PipeNode.tscn" id="3_3ylse"]
 
 [node name="WaterMine" instance=ExtResource("1_ucmaj")]
 script = ExtResource("2_qp2o6")
 id = 1
-inventoryScene = null
 
 [node name="StartNode" parent="." index="1" instance=ExtResource("3_3ylse")]
 position = Vector2(38, -15)

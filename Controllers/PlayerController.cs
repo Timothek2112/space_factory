@@ -21,8 +21,8 @@ public partial class PlayerController : Node
 
 	public bool isUIinFocus;
 	[Export] public bool isInventoryInFocus;
-	private StorageInventoryUI _inventoryInFocus;
-	public StorageInventoryUI inventoryInFocus
+	private IInventory _inventoryInFocus;
+	public IInventory inventoryInFocus
 	{
 		get { return _inventoryInFocus; }
 		set { _inventoryInFocus = value; isUIinFocus = value != null; isInventoryInFocus = value != null; }
