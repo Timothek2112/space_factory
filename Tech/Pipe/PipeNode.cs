@@ -135,7 +135,10 @@ public partial class PipeNode : Area2D
 	{
 		if(!origin.CanGiveItem(itemsType, 1))		
 			return;
-		
+
+		if (!connectedTo.origin.CanAcceptItem(itemsType, 1))
+			return;
+
 		origin.RemoveItem(itemsType, 1);
 		PutItem(itemsType, 1);
 

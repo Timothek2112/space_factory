@@ -5,4 +5,5 @@ public partial class Item
 {
 	public Items type; 
 	public string name;
+	public int count;
 }

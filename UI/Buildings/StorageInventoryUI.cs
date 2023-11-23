@@ -58,7 +58,7 @@ public partial class StorageInventoryUI : NinePatchRect, IInventory
         {
             var instance = itemSlot.Instantiate();
             var itemUI = (ItemUI)instance;
-            itemUI.SetSprite(GD.Load<Texture2D>("res://Icons/water_icon_inventory.png"));
+            itemUI.SetSprite(GD.Load<Texture2D>("res://Icons/Items/water_barrel_32.png"));
             itemUI.SetCount(slot.currentCount);
             itemUI.slot = slot;
             container.AddChild(instance);

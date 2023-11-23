@@ -46,7 +46,7 @@ public partial class Mine : BaseBuilding
 				return;
 			//Print(storageForResource.type + ": " + storageForResource.currentCount + "/" + storageForResource.capability);
 			if(storageForResource.capability > storageForResource.currentCount)
-				storageForResource.currentCount += 1;
+				storageForResource.currentCount += item.count;
 		}
 	}
 

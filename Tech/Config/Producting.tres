@@ -10,7 +10,7 @@ data = [{
 "capability": 10.0,
 "type": "rock"
 }],
-"itemsPerSecond": 1.0,
+"itemsPerSecond": 0.1,
 "name": "Изготовитель Гладкого Камня",
 "outputSlots": [{
 "capability": 100.0,
@@ -19,5 +19,12 @@ data = [{
 "productingResources": [{
 "count": 10.0,
 "type": "formStone"
+}],
+"requiresToProduct": [{
+"count": 10.0,
+"type": "rock"
+}, {
+"count": 20.0,
+"type": "water"
 }]
 }]

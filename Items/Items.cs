@@ -8,4 +8,10 @@ public enum Items
 	wood,
 	water,
 	formStone,
+	ironOre,
+	iron,
+	copperOre,
+	copper,
+	electronicParts,
+	coal
 }

@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://mqdfnh5jse4l"]
 
 [ext_resource type="Script" path="res://UI/ItemUI.cs" id="1_wqmfq"]
-[ext_resource type="Texture2D" uid="uid://co7w3u5gqnacm" path="res://Icons/water_icon_inventory.png" id="1_xqy2w"]
 [ext_resource type="PackedScene" uid="uid://djaamnjtow4ll" path="res://UI/ItemUIDtaggable.tscn" id="2_7gxtp"]
+[ext_resource type="Texture2D" uid="uid://d2jmc8tynlef3" path="res://Icons/Items/water_barrel_32.png" id="3_e5u1c"]
 
 [node name="ItemUI" type="Control"]
 process_mode = 1
@@ -31,12 +31,13 @@ text = "0000"
 horizontal_alignment = 1
 
 [node name="Sprite" type="TextureRect" parent="."]
-texture_filter = 1
+texture_filter = 5
 layout_mode = 0
 offset_left = 11.0
-offset_top = 10.0
 offset_right = 103.0
 offset_bottom = 104.0
-texture = ExtResource("1_xqy2w")
+texture = ExtResource("3_e5u1c")
+expand_mode = 3
+stretch_mode = 4
 
 [connection signal="gui_input" from="Sprite" to="." method="_on_sprite_gui_input"]

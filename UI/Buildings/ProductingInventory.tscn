@@ -10,13 +10,8 @@ bg_color = Color(0.0470588, 0.176471, 0.266667, 1)
 
 [node name="ProductingInventory" type="NinePatchRect"]
 texture_filter = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = -5.0
-offset_bottom = -9.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_right = 927.0
+offset_bottom = 367.0
 mouse_filter = 0
 texture = ExtResource("1_k5w7l")
 patch_margin_left = 4
@@ -29,7 +24,7 @@ slotBackground = ExtResource("2_p7xwy")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 layout_mode = 0
-offset_right = 1057.0
+offset_right = 823.0
 offset_bottom = 67.0
 texture = ExtResource("1_k5w7l")
 patch_margin_left = 4
@@ -74,10 +69,10 @@ layout_mode = 2
 
 [node name="OutputSlots" type="GridContainer" parent="."]
 layout_mode = 0
-offset_left = 789.0
-offset_top = 75.0
-offset_right = 916.0
-offset_bottom = 569.0
+offset_left = 663.0
+offset_top = 145.0
+offset_right = 790.0
+offset_bottom = 677.0
 
 [node name="NinePatchRect" parent="OutputSlots" instance=ExtResource("2_p7xwy")]
 layout_mode = 2
@@ -93,10 +88,10 @@ layout_mode = 2
 
 [node name="Output" type="GridContainer" parent="."]
 layout_mode = 0
-offset_left = 788.0
-offset_top = 74.0
-offset_right = 915.0
-offset_bottom = 645.0
+offset_left = 662.0
+offset_top = 144.0
+offset_right = 789.0
+offset_bottom = 715.0
 
 [node name="ItemUI" parent="Output" instance=ExtResource("3_4bibf")]
 layout_mode = 2
@@ -112,9 +107,9 @@ layout_mode = 2
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 0
-offset_left = 1055.0
+offset_left = 824.0
 offset_top = 3.0
-offset_right = 1148.0
+offset_right = 917.0
 offset_bottom = 69.0
 theme_override_font_sizes/font_size = 33
 theme_override_styles/normal = SubResource("StyleBoxFlat_c4nox")
